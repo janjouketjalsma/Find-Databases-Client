@@ -38,8 +38,15 @@
                         <!-- Breadcrumbs -->
                         <b-col>
                             <h4>
-                                <!-- @todo show currently selected category (+ subcategory) here -->
-                                    Browse
+                                <span @click="searchProperties.category = searchProperties.subcategory = null">Browse</span>
+                                <span v-if="searchProperties.category !== null" @click="searchProperties.subcategory = null">
+                                   <font-awesome-icon icon="angle-right"></font-awesome-icon>
+                                    {{searchProperties.category}}
+                                </span>
+                                <span v-if="searchProperties.subcategory !== null">
+                                   <font-awesome-icon icon="angle-right"></font-awesome-icon>
+                                    {{searchProperties.subcategory}}
+                                </span>
                             </h4>
                         </b-col>
 
