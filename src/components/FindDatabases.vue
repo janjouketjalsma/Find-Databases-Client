@@ -60,9 +60,20 @@
                     </b-row>
 
                     <!-- Separator -->
-                    <hr class="mt-1">
+                    <hr class="mt-1 mb-2">
 
-                    <!-- @todo show active filters here (except for category) -->
+                    <!-- show active filters here (except for category) -->
+                    <div class="mb-2">
+                            <b-badge v-if="searchProperties.type !== null" @click="searchProperties.type = null" pill variant="secondary">
+                                <strong>{{searchProperties.type}}</strong>
+                            </b-badge>
+                            <b-badge v-if="searchProperties.startsWith !== null" @click="searchProperties.startsWith = null" pill variant="secondary">
+                                Starts with <strong>{{searchProperties.startsWith}}</strong>
+                            </b-badge>
+                            <b-badge v-if="searchProperties.contains !== null" @click="searchProperties.contains = null" pill variant="secondary">
+                                Contains <strong>{{searchProperties.contains}}</strong>
+                            </b-badge>
+                    </div>
 
                     <!-- Database results -->
                     <b-list-group v-if="databases && databases.length">
