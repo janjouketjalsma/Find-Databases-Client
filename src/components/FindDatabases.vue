@@ -27,7 +27,12 @@
                 <b-col cols="3">
                     <h2>Categories</h2>
                     <b-list-group>
-                        <b-list-group-item @click="searchProperties.category = category.name" :key="category.name" v-for="category of categories">{{category.name}}</b-list-group-item>
+                        <b-list-group-item :key="category.name" v-for="category of categories">
+                            <span @click="searchProperties.category = category.name; searchProperties.subcategory = null">{{category.name}}</span>
+                            <b-list-group v-show="searchProperties.category === category.name">
+                                <b-list-group-item @click="searchProperties.category = category.name; searchProperties.subcategory = subcategory.name" v-for="subcategory of category.subcategories">{{subcategory.name}}</b-list-group-item>
+                            </b-list-group>
+                        </b-list-group-item>
                     </b-list-group>
                 </b-col>
 
