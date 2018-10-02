@@ -5,9 +5,11 @@
                 <font-awesome-icon icon="search" size="lg"></font-awesome-icon>
             </b-col>
             <b-col col>
-                <b-form-input v-model="searchString"
-                              type="text"
-                              placeholder="Search databases by title"></b-form-input>
+                <b-form-input type="text"
+                              placeholder="Search databases by title"
+                              :value="value"
+                              @input="searchString = $event"
+                ></b-form-input>
             </b-col>
         </b-row>
     </div>
@@ -23,11 +25,12 @@ export default {
       searchString: ''
     }
   },
+  props: ['value'],
   watch: {
     searchString: {
       handler: debounce(function (e) {
-        this.$emit('searchStringUpdated', this.searchString)
-      }, 200)
+        this.$emit('input', this.searchString)
+      }, 500)
     }
   }
 }

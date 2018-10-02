@@ -8,7 +8,7 @@
             <img src="../assets/logo.png">
 
             <!-- Title search box -->
-            <title-search @searchStringUpdated="handleSearchString($event)"/>
+            <title-search v-model="searchProperties.contains"/>
 
             <!-- Alphanumeric buttons -->
             <b-row no-gutters class="bg-primary mb-3">
@@ -138,11 +138,6 @@ export default {
     }
   },
   created: getData,
-  methods: {
-    handleSearchString: function (e) {
-      this.searchProperties.contains = e
-    }
-  },
   watch: {
     searchProperties: {
       handler: getData,
